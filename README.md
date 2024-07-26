@@ -166,9 +166,7 @@ $update-ca-certificates
 
 To import your CA certificate on Windows:
 
-```
-sh
-Copy code
+```sh
 certmgr.exe /add %cd%\ca_cert.crt /s /r localMachine root 
 ```
 
