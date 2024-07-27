@@ -25,8 +25,10 @@ function _M.init(cert_path, key_path, cfg)
         return false, "failed to open CA cert file"
     end
     local ca_cert_pem = file:read("*a")
+
     file:close()
-    local ca_cert, err = openssl_x509.new(ca_cert_pem)
+    local err
+    ca_cert, err = openssl_x509.new(ca_cert_pem)
     if not ca_cert then
         ngx.log(ngx.ERR, "failed to load CA cert: ", err)
         return false, "failed to load CA cert"
@@ -41,7 +43,7 @@ function _M.init(cert_path, key_path, cfg)
     local ca_pkey_pem = file:read("*a")
     file:close()
 
-    local ca_pkey, err = openssl_pkey.new(ca_pkey_pem)
+    ca_pkey, err = openssl_pkey.new(ca_pkey_pem)
     if not ca_pkey then
         ngx.log(ngx.ERR, "failed to load CA pkey: ", err)
         return false, "failed to load CA pkey"
