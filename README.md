@@ -6,7 +6,7 @@ A Lua module for dynamic generation and caching of SSL certificates for wildcard
 
 To install this module, you can use the OpenResty Package Manager (opm):
 
-```
+```sh
 opm get iakuf/lua-resty-ssl-bump
 ```
 
@@ -18,7 +18,7 @@ This module requires the `lua-cjson` and `lua-resty-openssl` libraries to work. 
 
 You can install `lua-cjson` using OPM:
 
-```
+```sh
 opm get ledgetech/lua-cjson
 ```
 
@@ -26,7 +26,7 @@ opm get ledgetech/lua-cjson
 
 You can install `lua-resty-openssl` using OPM:
 
-```
+```sh
 opm get fffonion/lua-resty-openssl 
 ```
 
@@ -36,7 +36,7 @@ opm get fffonion/lua-resty-openssl
 
 To generate your own CA certificate, use the following command:
 
-```shell
+```sh
 openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -extensions v3_ca -keyout /path/to/ca_cert.key -out /path/to/ca_cert.crt
 ```
 
@@ -156,10 +156,9 @@ http {
 
 To import your CA certificate on Ubuntu:
 
-```
-$cp /path/to/ca_cert.crt  /usr/local/share/ca-certificates/ca_cert.crt
-# Update CA certificate cache
-$update-ca-certificates
+```shell
+cp /path/to/ca_cert.crt  /usr/local/share/ca-certificates/ca_cert.crt
+update-ca-certificates
 ```
 
 #### On Windows
